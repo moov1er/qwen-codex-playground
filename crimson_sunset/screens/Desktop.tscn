@@ -1,0 +1,143 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://screens/Desktop.gd" id="1"]
+[ext_resource type="PackedScene" path="res://ui/DialogueBox.tscn" id="2"]
+
+[node name="Desktop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1")
+
+[node name="Bg" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.06, 0.05, 0.09, 1)
+
+[node name="Top" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = -16.0
+offset_bottom = 46.0
+
+[node name="Stats" type="Label" parent="Top"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.85, 0.5, 0.5, 1)
+text = "..."
+
+[node name="InboxBtn" type="Button" parent="Top"]
+layout_mode = 2
+text = "Входящие ✉"
+
+[node name="HideoutBtn" type="Button" parent="Top"]
+layout_mode = 2
+text = "Убежище"
+
+[node name="MapBtn" type="Button" parent="Top"]
+layout_mode = 2
+text = "Карта"
+
+[node name="SaveBtn" type="Button" parent="Top"]
+layout_mode = 2
+text = "Сохранить"
+
+[node name="Main" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 56.0
+offset_right = -16.0
+offset_bottom = -16.0
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
+columns = 2
+
+[node name="Terminal" type="PanelContainer" parent="Main"]
+custom_minimum_size = Vector2(620, 300)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Main/Terminal"]
+layout_mode = 2
+
+[node name="Cap" type="Label" parent="Main/Terminal/VBox"]
+layout_mode = 2
+text = "Терминал"
+
+[node name="Out" type="RichTextLabel" parent="Main/Terminal"]
+layout_mode = 2
+bbcode_enabled = true
+text = ""
+
+[node name="Cmd" type="LineEdit" parent="Main/Terminal"]
+visible = false
+layout_mode = 2
+
+[node name="News" type="PanelContainer" parent="Main"]
+custom_minimum_size = Vector2(600, 160)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Main/News"]
+layout_mode = 2
+
+[node name="Cap" type="Label" parent="Main/News/VBox"]
+layout_mode = 2
+text = "Лента новостей Меридиана"
+
+[node name="List" type="ItemList" parent="Main/News"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Missions" type="PanelContainer" parent="Main"]
+custom_minimum_size = Vector2(620, 220)
+layout_mode = 2
+
+[node name="Cap" type="Label" parent="Main/Missions"]
+layout_mode = 2
+text = "Доступные задания"
+
+[node name="List" type="ItemList" parent="Main/Missions"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Files" type="PanelContainer" parent="Main"]
+custom_minimum_size = Vector2(600, 220)
+layout_mode = 2
+
+[node name="Cap" type="Label" parent="Main/Files"]
+layout_mode = 2
+text = "Файлы и улики"
+
+[node name="List" type="ItemList" parent="Main/Files"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CommandLine" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -46.0
+offset_right = -16.0
+offset_bottom = -12.0
+placeholder_text = "введи команду (help) и нажми Enter"
+
+[node name="DialogueBox" parent="." instance=ExtResource("2")]
+layout_mode = 1
+
+[connection signal="pressed" from="Top/InboxBtn" to="." method="_on_inbox_pressed"]
+[connection signal="pressed" from="Top/HideoutBtn" to="." method="_on_hideout_pressed"]
+[connection signal="pressed" from="Top/MapBtn" to="." method="_on_map_pressed"]
+[connection signal="pressed" from="Top/SaveBtn" to="." method="_on_save_pressed"]
+[connection signal="item_selected" from="Main/Missions/List" to="." method="_on_mission_selected"]
+[connection signal="text_submitted" from="CommandLine" to="." method="_on_terminal_send"]

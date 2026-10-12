@@ -1,0 +1,153 @@
+[
+ {
+  "id": "m01_dead_channel",
+  "title": "Мёртвый канал",
+  "act": 1,
+  "location": "old_service_hub",
+  "description": "Старый сервисный узел связи за трамвайным ангаром. Три года назад через него Лина передала свой последний пакет. Ангар охраняют сторож и одна старая камера — но тревога вызывает патруль.",
+  "mission_scene": "res://gameplay/StealthMission.tscn",
+  "requirements": [],
+  "objectives": [
+   "Проникни в сервисный узел",
+   "Обойди охрану",
+   "Найди серверный шкаф",
+   "Подключись к серверу",
+   "Извлеки пакет данных",
+   "Покинь здание"
+  ],
+  "optional_objectives": [
+   "Не поднимай тревогу",
+   "Не попадайся камере",
+   "Найди старый файл Лины",
+   "Отключи камеру"
+  ],
+  "minigames": [
+   "data_routing"
+  ],
+  "rewards": {
+   "money": 250,
+   "reputation": 1,
+   "heat": 6
+  },
+  "flags_on_complete": [
+   "m01_completed",
+   "sister_signal_found",
+   "met_ren"
+  ],
+  "flags_on_fail": [
+   "m01_failed"
+  ],
+  "news_on_complete": [
+   "news_ads_glitch"
+  ],
+  "unlocks": [
+   "m02_archive"
+  ]
+ },
+ {
+  "id": "m02_archive",
+  "title": "Архив под стеклом",
+  "act": 2,
+  "location": "aurora_office_archive",
+  "description": "Офис Aurora Dynamics, отдел архивов. Где-то в серверной лежит файл проекта Helios с именами из «Чёрного заката». Внутри: ресепшен, два патруля, камеры и ключ-карта уровня 1.",
+  "mission_scene": "res://gameplay/StealthMission.tscn",
+  "requirements": [
+   "m01_completed"
+  ],
+  "require_missions": [
+   "m01_dead_channel"
+  ],
+  "objectives": [
+   "Проникни в здание через служебный вход",
+   "Пройди в закрытую зону",
+   "Избежи охранников и камер",
+   "Подключись к архивному серверу",
+   "Скачай файл Helios",
+   "Покинь здание до группы безопасности"
+  ],
+  "optional_objectives": [
+   "Не поднимай тревогу",
+   "Не попадайся камере",
+   "Скопируй логи (нужен noise_box)",
+   "Найди имя Лины в архиве"
+  ],
+  "minigames": [
+   "connection_stability"
+  ],
+  "rewards": {
+   "money": 400,
+   "reputation": 2,
+   "heat": 10,
+   "items": [
+    "keycard_1"
+   ]
+  },
+  "flags_on_complete": [
+   "m02_completed",
+   "helios_file_found",
+   "lin_name_in_archive",
+   "joined_crimson"
+  ],
+  "flags_on_fail": [
+   "m02_failed"
+  ],
+  "news_on_complete": [
+   "news_data_breach_rumor"
+  ],
+  "unlocks": [
+   "m03_helios7"
+  ]
+ },
+ {
+  "id": "m03_helios7",
+  "title": "Гелиос-7",
+  "act": 3,
+  "location": "aurora_datacenter",
+  "description": "Серверный узел Гелиос-7: три патруля, камеры, дрон и двери разных уровней. Центральный узел хранит ключ к Solar Spire. Чем выше твоё тепло, тем внимательнее охрана.",
+  "mission_scene": "res://gameplay/StealthMission.tscn",
+  "requirements": [
+   "m02_completed"
+  ],
+  "require_missions": [
+   "m02_archive"
+  ],
+  "objectives": [
+   "Проникни в дата-центр",
+   "Пройти внешнюю охрану",
+   "Найди доступ к серверному залу",
+   "Подключись к центральному узлу",
+   "Установи следящий модуль",
+   "Эвакуируйся через крышу"
+  ],
+  "optional_objectives": [
+   "Не поднимай тревогу",
+   "Не попадайся камере",
+   "Не повреди серверы",
+   "Найди данные о Лине"
+  ],
+  "minigames": [
+   "core_bypass",
+   "trace_escape"
+  ],
+  "rewards": {
+   "money": 700,
+   "reputation": 3,
+   "heat": 18,
+   "evidence": [
+    "cascade_signature"
+   ]
+  },
+  "flags_on_complete": [
+   "m03_completed",
+   "spire_key_found",
+   "cascade_known"
+  ],
+  "flags_on_fail": [
+   "m03_failed"
+  ],
+  "news_on_complete": [
+   "news_cascade_hunt"
+  ],
+  "unlocks": []
+ }
+]
