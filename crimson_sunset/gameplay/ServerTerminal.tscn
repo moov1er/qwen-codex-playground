@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://gameplay/ServerTerminal.gd" id="1"]
+
+[node name="ServerTerminal" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.2, 0.55, 0.5, 1)
+polygon = PackedVector2Array(-14, -22, 14, -22, 14, 22, -14, 22)
+
+[node name="Lamp" type="Polygon2D" parent="."]
+position = Vector2(0, -14)
+color = Color(0.3, 0.95, 0.6, 1)
+polygon = PackedVector2Array(-3, -3, 3, -3, 3, 3, -3, 3)
